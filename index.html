@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- é a primeira linha de todo arquivo HTML. Ela não é um “comando” que aparece na tela, Ela é a primeira coisa que você escreve e diz ao navegador (Chrome, Edge, etc.. que é um arquivo HTML.-->
+
+<html lang="pt-BR">
+<!-- é a raiz do documento HTML, Tudo que vai aparecer na página (textos, imagens, links, formulários) fica dentro dessa tag. lang="pt-BR" → define a linguagem conteudo português do Brasil.-->
+
+<head>
+    <!-- Cabeçalho da página, e a estruturação da pagina. :
+    
+        <title> → Define o texto que aparece na aba do seu navegador ou nos resultados de pesquisa (Nome da Aba).
+
+         <meta charset="UTF-8"> → Diz ao navegador como exibir corretamente todos os caracteres, incluindo acentos e símbolos (Configura Acentos e Símbolos).
+
+         <link> → Conecta o seu documento HTML aos arquivos de estilo CSS que definem a aparência da pagina Liga o HTML ao CSS (Estilo).
+
+         <script> → Conecta o seu documento HTML aos arquivos de código JavaScript que adicionam interatividade à página Liga o HTML ao JavaScript (Funcionalidade).
+
+         <-- Define o conjunto de caracteres que será utilizado -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Design responsivo: adaptação nos navegadores (celular e computado <meta> → é uma informação sobre a página, que o navegador usa mas não aparece na tela.
+
+     name="viewport" → diz que essa meta informação é sobre a janela de visualização (a tela do usuário).
+
+     content="width=device-width, initial-scale=1.0" → faz duas coisas:
+
+    width=device-width → a largura da página vai se ajustar automaticamente à largura da tela do dispositivo.
+
+    initial-scale=1.0 → a página começa com zoom normal, sem aumentar nem diminuir.
+
+    Resumindo: sem isso, seu site fica enorme ou minúsculo no celular, e ninguém consegue ver direito.
+    Com isso, ele fica responsivo desde o primeiro passo.r) -->
+
+    <title>Defensores do Rio</title>
+    <!-- Essa linha faz só uma coisa, mas super importante: define o título da aba do navegador. Quando você abre sua página no Chrome, Edge ou outro navegador, o que aparece na aba é o que está dentro do, Se alguém salvar a página nos favoritos, esse também será o nome exibido. -->
+
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Defensores do Rio | Apoie Comunidades Ribeirinhas da Amazônia</a></h1>
+        
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="#institucional">Quem Somos</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#voluntariado">Voluntariado</a></li>
+                <li><a href="#doacao" class="botao-destaque">Doe Agora</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="hero">
+            <h2>Sua Ajuda Transforma o Futuro!</h2>
+            <p>Junte-se a nós para criar um impacto social duradouro na comunidade.</p>
+            <a href="#doacao" class="botao-primario">Saiba Como Ajudar</a>
+        </section>
+
+        <section id="institucional" aria-labelledby="institucional-title">
+            <h2 id="institucional-title">Missão, Visão e Valores</h2>
+            <article class="missao">
+                <h3>Missão</h3>
+                <p>Aqui entra a sua missão...</p>
+            </article>
+            <article class="visao">
+                <h3>Visão</h3>
+                <p>Aqui entra a sua visão...</p>
+            </article>
+            <article class="valores">
+                <h3>Valores</h3>
+                <p>Aqui entram seus valores...</p>
+            </article>
+        </section>
+
+        <section id="projetos" aria-labelledby="projetos-title">
+            <h2 id="projetos-title">Nossos Projetos de Impacto</h2>
+            </section>
+        
+        <section id="voluntariado" aria-labelledby="voluntariado-title">
+             <h2 id="voluntariado-title">Engajamento de Voluntários</h2>
+             </section>
+
+        <section id="doacao" aria-labelledby="doacao-title">
+            <h2 id="doacao-title">Captação de Recursos</h2>
+            </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <p>Entre em Contato: email@ong.org | (XX) XXXX-XXXX</p>
+        </address>
+        <div class="links-uteis">
+            <a href="politica.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a>
+        </div>
+        <p>&copy; 2025 Nome da ONG. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script src="js/script.js"></script>
+
+</body>
+</html>
