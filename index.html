@@ -42,6 +42,24 @@
                 <li><a href="projetos.html">Projetos</a></li>
                 <!-- Define este como um item dentro da lista do menu, item do menu que permite ao usuário visualizar as iniciativas e ações que a plataforma está divulgando e apoiando.-->
                 <li><a href="cadastro.html">Cadastre-se</a></li><!--Define como um item da lista de menu O destino do link é o arquivo cadastro.html, que é a página que deve conter um formulário para o usuário se registrar.-->
+
+    <title>Defensores do Rio</title>
+    <!-- Essa linha faz só uma coisa, mas super importante: define o título da aba do navegador. Quando você abre sua página no Chrome, Edge ou outro navegador, o que aparece na aba é o que está dentro do, Se alguém salvar a página nos favoritos, esse também será o nome exibido. -->
+
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Defensores do Rio | Apoie Comunidades Ribeirinhas da Amazônia</a></h1> <!--É a tag de cabeçalho mais importante em HTML, indicando o título principal ou nome da página/site.-->
+        
+        <nav aria-label="Navegação Principal">
+            <ul> <!--Indica aos navegadores e tecnologias assistivas (leitores de tela) que este bloco contém os links principais do site -->
+
+                <li><a href="#institucional">Quem Somos</a></li> <!--Define um item individual dentro de uma lista (<ul> ou <ol>). Neste contexto, cada <li> representa uma opção no menu de navegação e a navegação: Ao ser clicado, o navegador rola a página automaticamente até encontrar o elemento que possui o id="institucional-->
+
+                <li><a href="#projetos">Projetos</a></li> <!--É o elemento que agrupa e organiza o link, tornando-o parte de uma lista de navegação (<ul>) Navegação Interna: O #projetos cria um link de salto (ou âncora) que, quando clicado, move a tela do usuário para a seção exata da página que tem o atributo id="projetos".-->
+                <li><a href="#voluntariado">Voluntariado</a></li> <!--Navegação: Quando o link for clicado, o navegador rolará a página para a seção que possui o atributo id="voluntariado" (que em seu código corresponde à seção "Faça Parte dessa Corrente")-->
+                <li><a href="#doacao" class="botao-destaque">Doe Agora</a></li>
+
             </ul>
         </nav>
     </header>
@@ -173,3 +191,110 @@ Em resumo: Este bloco é estruturalmente correto, semanticamente adequado e o co
     </nav>
     <p>&copy; 2025 Defensores do Rio. Todos os direitos reservados.</p>
 </footer>
+
+        
+        <main>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+            <div id="hero-content">
+                <h2>Dando Voz às Margens do Rio</h2>
+                <p>Cada rio carrega uma história. Cada apoio transforma vidas nas comunidades ribeirinhas da Amazônia.</p>
+                <a href="#doacao">Apoiar Agora</a>
+            </div>
+        </section>
+
+        <section id="institucional" aria-labelledby="institucional-title">
+            <h2 id="institucional-title">Nossa Essência</h2>
+            
+            <article class="missao">
+                <h3>Missão</h3>
+                <p>Promover o fortalecimento das comunidades ribeirinhas da Amazônia, dando visibilidade às suas histórias e apoiando seu desenvolvimento sustentável.</p>
+            </article>
+            
+            <article class="visao">
+                <h3>Visão</h3>
+                <p>Ser uma ponte entre a sociedade e os povos do rio, inspirando ações de respeito, solidariedade e preservação ambiental.</p>
+            </article>
+            
+            <article class="valores">
+                <h3>Valores</h3>
+                <ul>
+                    <li>Respeito às culturas ribeirinhas</li>
+                    <li>Transparência nas ações</li>
+                    <li>Amor pela natureza e pelas pessoas</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="projetos" aria-labelledby="projetos-title">
+            <h2 id="projetos-title">Projetos que Navegam por um Futuro Melhor</h2>
+            <p>Aqui você conhecerá as iniciativas que levam educação, saúde e sustentabilidade às margens do Rio.</p>
+            
+            <article class="projeto">
+                <h3>Educação nas Águas</h3>
+                <p>Projeto de leitura e ensino digital para crianças ribeirinhas em parceria com voluntários e escolas locais.</p>
+            </article>
+            
+            <article class="projeto">
+                <h3>Saúde Ribeirinha</h3>
+                <p>Apoio a campanhas de vacinação, atendimento médico e conscientização sobre higiene e nutrição.</p>
+            </article>
+            
+            <article class="projeto">
+                <h3>Economia Sustentável</h3>
+                <p>Fomento ao artesanato e à pesca sustentável, garantindo renda e preservação dos recursos naturais.</p>
+            </article>
+        </section>
+
+        <section id="voluntariado" aria-labelledby="voluntariado-title">
+            <h2 id="voluntariado-title">Faça Parte dessa Corrente</h2>
+            <p>Quer transformar vidas? Seja voluntário e participe das ações diretamente nas comunidades ribeirinhas.</p>
+            <a href="#doacao">Quero Me Engajar</a>
+        </section>
+
+        <section id="doacao" aria-labelledby="doacao-title">
+            <h2 id="doacao-title">Doe e Ajude o Rio a Fluir</h2>
+            <p>Com sua contribuição, apoiamos projetos reais que mudam o cotidiano de famílias que vivem da e pela natureza.</p>
+            <a href="#">Fazer uma Doação</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-trust-bar">
+            <span>✓ 100% Transparente</span>
+            <span>•</span>
+            <span>✓ Relatórios Mensais</span>
+            <span>•</span>
+            <span>✓ Certificado de Doação</span>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-contact">
+                <h3>Entre em Contato:</h3>
+                <div>
+                    <a href="mailto:contato@defensoresdorio.org">📧 contato@defensoresdorio.org</a> 
+                    | 
+                    <a href="tel:+5592987654321">📱 (92) 98765-4321</a>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <a href="#">Política de Privacidade</a> 
+                | 
+                <a href="#">Termos de Uso</a> 
+                | 
+                <a href="#">Transparência</a>
+            </div>
+
+            <p>© 2025 Defensores do Rio. Todos os direitos reservados.</p>
+            
+            <p class="footer-slogan">
+                "Unidos pelas águas que nos sustentam" 🌊
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
