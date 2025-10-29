@@ -1,266 +1,165 @@
 <!DOCTYPE html>
-<!-- é a primeira linha de todo arquivo HTML. Ela não é um “comando” que aparece na tela, Ela é a primeira coisa que você escreve e diz ao navegador (Chrome, Edge, etc.. que é um arquivo HTML.-->
-
 <html lang="pt-BR">
-<!-- é a raiz do documento HTML, Tudo que vai aparecer na página (textos, imagens, links, formulários) fica dentro dessa tag. lang="pt-BR" → define a linguagem conteudo português do Brasil.-->
-
 <head>
-    <!-- Cabeçalho da página, e a estruturação da pagina. :
-    
-        <title> → Define o texto que aparece na aba do seu navegador ou nos resultados de pesquisa (Nome da Aba).
-
-         <meta charset="UTF-8"> → Diz ao navegador como exibir corretamente todos os caracteres, incluindo acentos e símbolos (Configura Acentos e Símbolos).
-
-         <link> → Conecta o seu documento HTML aos arquivos de estilo CSS que definem a aparência da pagina Liga o HTML ao CSS (Estilo).
-
-         <script> → Conecta o seu documento HTML aos arquivos de código JavaScript que adicionam interatividade à página Liga o HTML ao JavaScript (Funcionalidade).
-
-         <-- Define o conjunto de caracteres que será utilizado -->
-    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Design responsivo: adaptação nos navegadores (celular e computado <meta> → é uma informação sobre a página, que o navegador usa mas não aparece na tela.
-
-     name="viewport" → diz que essa meta informação é sobre a janela de visualização (a tela do usuário).
-
-     content="width=device-width, initial-scale=1.0" → faz duas coisas:
-
-    width=device-width → a largura da página vai se ajustar automaticamente à largura da tela do dispositivo.
-
-    initial-scale=1.0 → a página começa com zoom normal, sem aumentar nem diminuir.
-
-    Resumindo: sem isso, seu site fica enorme ou minúsculo no celular, e ninguém consegue ver direito.
-    Com isso, ele fica responsivo desde o primeiro passo.r) -->
-<link rel="shortcut icon" href="favicon.ico" cmstype="image/x-icon"> <!-- comando para insegir um icone na aba do site, nesse caso foi escolhido uma folha-->
-
-     <h1><a href="index.html">Defensores do Rio | Apoie Comunidades Ribeirinhas da Amazônia</a></h1> <!--É a tag mais importante para o título principal do conteúdo da página.-->
-     <img src="imagens criada.png" alt="logo do site mãos unidadas">   
-
-        <nav aria-label="Navegação Principal">
-            <ul> <!--Define uma seção que contém links de navegação. Ele ajuda os navegadores e tecnologias assistivas (como leitores de tela) a identificar o menu.-->
-                <li><a href="index.html">Início</a></li> <!--Função: Marca um item individual dentro de uma lista ordenada (<ol>) ou, mais comumente em menus, de uma lista não ordenada (<ul>).Semântica: Ajuda a estruturar o menu, indicando que cada link é um item distinto da navegação principal.-->
-
-                <li><a href="projetos.html">Projetos</a></li>
-                <!-- Define este como um item dentro da lista do menu, item do menu que permite ao usuário visualizar as iniciativas e ações que a plataforma está divulgando e apoiando.-->
-                <li><a href="cadastro.html">Cadastre-se</a></li><!--Define como um item da lista de menu O destino do link é o arquivo cadastro.html, que é a página que deve conter um formulário para o usuário se registrar.-->
-
-    <title>Defensores do Rio</title>
-    <!-- Essa linha faz só uma coisa, mas super importante: define o título da aba do navegador. Quando você abre sua página no Chrome, Edge ou outro navegador, o que aparece na aba é o que está dentro do, Se alguém salvar a página nos favoritos, esse também será o nome exibido. -->
-
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Defensores do Rio - Conectando e Fortalecendo Comunidades Ribeirinhas</title>
 </head>
 <body>
+    <!-- CABEÇALHO -->
     <header>
-        <h1><a href="index.html">Defensores do Rio | Apoie Comunidades Ribeirinhas da Amazônia</a></h1> <!--É a tag de cabeçalho mais importante em HTML, indicando o título principal ou nome da página/site.-->
+        <img src="imagens/logo.png" alt="Logo Defensores do Rio - Mãos Unidas" width="150">
+        <h1>Defensores do Rio - Apoie Comunidades Ribeirinhas da Amazônia</h1>
         
         <nav aria-label="Navegação Principal">
-            <ul> <!--Indica aos navegadores e tecnologias assistivas (leitores de tela) que este bloco contém os links principais do site -->
-
-                <li><a href="#institucional">Quem Somos</a></li> <!--Define um item individual dentro de uma lista (<ul> ou <ol>). Neste contexto, cada <li> representa uma opção no menu de navegação e a navegação: Ao ser clicado, o navegador rola a página automaticamente até encontrar o elemento que possui o id="institucional-->
-
-                <li><a href="#projetos">Projetos</a></li> <!--É o elemento que agrupa e organiza o link, tornando-o parte de uma lista de navegação (<ul>) Navegação Interna: O #projetos cria um link de salto (ou âncora) que, quando clicado, move a tela do usuário para a seção exata da página que tem o atributo id="projetos".-->
-                <li><a href="#voluntariado">Voluntariado</a></li> <!--Navegação: Quando o link for clicado, o navegador rolará a página para a seção que possui o atributo id="voluntariado" (que em seu código corresponde à seção "Faça Parte dessa Corrente")-->
-                <li><a href="#doacao" class="botao-destaque">Doe Agora</a></li>
-
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="#institucional">Quem Somos</a></li>
+                <li><a href="#voluntariado">Voluntariado</a></li>
+                <li><a href="#doacao">Doe Agora</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <main>
-       <main>
-
-    <!-- SEÇÃO DESTAQUE  conteudo principal (HERO) -->
-    <section id="hero">
-        <h2>Cada Gota Conta: Fortalecendo as Margens do Rio</h2>
-        <p>Junte-se aos Defensores do Rio e ajude a levar educação, saúde e dignidade às famílias da Amazônia.</p>
-
-        <a href="#doacao" class="botao-primario">Saiba Como Ajudar</a> <!--Convida o usuário a explorar as opções de apoio, alinhando-se perfeitamente com a proposta de "conexão" e "facilitação" do seu site.
-        Em resumo: É o botão que faz a transição do texto de impacto (Hero Section) para a ação prática de engajamento na página.-->
-    </section>
-
-    <!-- SEÇÃO INSTITUCIONAL -->
-    <section id="institucional" aria-labelledby="institucional-title"> 
-        <!--Para usuários de leitores de tela, este atributo informa qual é o título principal (<h2>) da seção. Isso ajuda o leitor de tela a anunciar o contexto corretamente, tornando o site muito mais acessível. Em resumo: Este código abre a área do seu site dedicada a responder "Quem Somos" de forma formal e estruturada, e o faz utilizando as melhores práticas de organização (ID) e acessibilidade (ARIA).-->
-
-        <!-- Título da seção -->
-        <h2 id="institucional-title">Quem Somos</h2> <!--<section id="institucional" aria-labelledby="institucional-title"> diz ao leitor de tela que o título oficial (ou "rótulo") dessa seção é o texto contido no elemento com o id="institucional-title", ou seja, o texto "Quem Somos".Em resumo: Este é o título principal da seção que explica a identidade, missão, visão e valores da plataforma "Defensores do Rio". O uso do <h2> e do id demonstra uma boa prática em estrutura e acessibilidade HTML.-->
-
-        <!-- INTRODUÇÃO -->
-        <article class="introducao">
-            <h3>Introdução</h3>
-            <p>Somos os <strong>Defensores do Rio</strong> — uma ponte que conecta e amplifica a voz das ONGs parceiras que atuam nas margens da Amazônia. Nosso propósito é dar visibilidade a quem transforma realidades ribeirinhas, fortalecendo a rede de solidariedade que protege o bioma e suas comunidades.</p> <!--Mensagem Chave: A frase central "Somos os Defensores do Rio — uma ponte que conecta e amplifica a voz das ONGs parceiras que atuam nas margens da Amazônia" .-->
-        </article>
-
-        <!-- MISSÃO -->
-        <article class="missao">
-            <h3>Missão</h3>
-            <p>Conectar a sociedade a iniciativas de impacto que promovem dignidade, inclusão e desenvolvimento sustentável para as comunidades ribeirinhas da Amazônia. Acreditamos que cada gesto de apoio pode transformar vidas e preservar histórias que fluem junto aos rios. Nosso papel é dar visibilidade às ONGs e projetos locais, aproximando pessoas, empresas e instituições dispostas a somar forças por um futuro mais justo e equilibrado. Por meio da tecnologia, da comunicação e da empatia, construímos pontes sólidas entre quem precisa de ajuda e quem deseja fazer a diferença — porque cuidar da Amazônia é cuidar de todos nós.</p>
-        </article>
-
-        <!-- VISÃO -->
-        <article class="visao">
-            <h3>Visão</h3>
-            <p>Ser a principal plataforma de visibilidade e captação de recursos para ONGs e projetos que atuam em prol dos direitos básicos e da conservação do bioma amazônico. Queremos inspirar uma cultura de engajamento e responsabilidade compartilhada, mostrando que pequenas ações podem gerar grandes transformações.</p>
-        </article>
-
-        <!-- VALORES -->
-        <article class="valores">
-            <h3>Nossos Valores</h3>
-            <ul>
-                <li><strong>Empatia:</strong> valorizamos cada história e respeitamos as culturas locais.</li>
-                <li><strong>Transparência:</strong> prestamos contas de cada recurso captado.</li>
-                <li><strong>Conexão:</strong> aproximamos pessoas e causas com autenticidade.</li>
-                <li><strong>Sustentabilidade:</strong> promovemos soluções que respeitam o meio ambiente.</li>
-                <li><strong>Inclusão:</strong> garantimos dignidade e oportunidades para todos.</li>
-                <li><strong>Impacto:</strong> medimos resultados de cada iniciativa apoiada.</li>
-            </ul>
-        </article><!--Os valores listados são extremamente apropriados para um site que atua como plataforma de conexão e divulgação de ONGs, pois enfatizam:
-
-Conexão & Transparência: Essenciais para ganhar a confiança do doador (e-commerce social).
-
-Empatia & Inclusão: Demonstram o foco social e o respeito pela causa ribeirinha.
-
-Sustentabilidade & Impacto: Mostram a seriedade do critério de seleção de projetos.
-
-Em resumo: Este bloco é estruturalmente correto, semanticamente adequado e o conteúdo dos valores é poderoso e coerente com a missão da sua plataforma.-->
-
-    </section>
-
-    <!-- NOSSA HISTÓRIA -->
-    <section id="historia" aria-labelledby="historia-title">
-        <h2 id="historia-title">Nossa História</h2>
-
-        <article class="como-comecou">
-            <h3>Como Tudo Começou</h3>
-            <p>Fundada em 2018 por um grupo de biólogos, educadores e voluntários que atuavam na Amazônia, a <strong>Defensores do Rio</strong> nasceu da necessidade de dar visibilidade às comunidades ribeirinhas e conectá-las a recursos e apoio.</p>
-            <figure>
-                <img src="primeiros-voluntarios.jpg" alt="Primeiros voluntários da ONG em comunidade ribeirinha">
-                <figcaption>Primeiros voluntários da ONG em comunidade ribeirinha.</figcaption>
-            </figure>
-        </article>
-
-        <article class="conquistas">
-            <h3>Conquistas</h3>
-            <ul>
-                <li><strong>2018:</strong> Fundação da organização com 3 projetos piloto.</li>
-                <li><strong>2019:</strong> Primeira escola flutuante inaugurada.</li>
-                <li><strong>2020:</strong> Expansão para 15 comunidades ribeirinhas.</li>
-                <li><strong>2021:</strong> Certificação de ONG de utilidade pública.</li>
-                <li><strong>2022:</strong> 1.000 famílias impactadas diretamente.</li>
-                <li><strong>2023:</strong> Parceria com 12 ONGs locais estabelecida.</li>
-                <li><strong>2024:</strong> Mais de 3.500 atendimentos em saúde realizados.</li>
-            </ul>
-        </article>
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato" aria-labelledby="contato-title">
-        <h2 id="contato-title">Entre em Contato</h2>
-        <address>
-            <p><strong>Defensores do Rio - ONG</strong></p>
-            <p>Avenida das Águas, 123 - Centro</p>
-            <p>Manaus - AM - CEP: 69000-000</p>
-            <p>Telefone: (92) 3234-5678</p>
-            <p>WhatsApp: (92) 99988-7766</p>
-            <p>E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
-            <p>Atendimento: Segunda a Sexta, das 8h às 18h</p>
-        </address>
-    </section>
-
-    <!-- REDES SOCIAIS -->
-    <section id="redes" aria-labelledby="redes-title">
-        <h2 id="redes-title">Redes Sociais</h2>
-        <p>Acompanhe nosso trabalho e veja o impacto em tempo real:</p>
-        <ul>
-            <li>Instagram: <a href="https://www.instagram.com/defensoresdorio" target="_blank">@defensoresdorio</a></li>
-            <li>Facebook: <a href="https://www.facebook.com/DefensoresdoRio" target="_blank">/DefensoresdoRio</a></li>
-            <li>YouTube: <a href="https://www.youtube.com/@DefensoresdoRio" target="_blank">Defensores do Rio Oficial</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/company/defensoresdorio" target="_blank">Defensores do Rio</a></li>
-        </ul>
-    </section>
-
-</main>
-
-<!-- RODAPÉ -->
-<footer>
-    <p><strong>Defensores do Rio</strong></p>
-    <p>CNPJ: 12.345.678/0001-90</p>
-    <p>Telefone: (92) 3234-5678 | E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
-    <nav>
-        <a href="index.html">Início</a> | 
-        <a href="#projetos">Projetos</a> | 
-        <a href="#voluntariado">Cadastre-se</a>
-    </nav>
-    <p>&copy; 2025 Defensores do Rio. Todos os direitos reservados.</p>
-</footer>
-
-        
-        <main>
-  
-  <!-- Hero Section -->
-  <section id="hero">
-            <div id="hero-content">
-                <h2>Dando Voz às Margens do Rio</h2>
-                <p>Cada rio carrega uma história. Cada apoio transforma vidas nas comunidades ribeirinhas da Amazônia.</p>
-                <a href="#doacao">Apoiar Agora</a>
-            </div>
+        <!-- SEÇÃO DESTAQUE (HERO) -->
+        <section id="hero">
+            <h2>Cada Gota Conta: Fortalecendo as Margens do Rio</h2>
+            <p>Junte-se aos Defensores do Rio e ajude a levar educação, saúde e dignidade às famílias da Amazônia.</p>
+            <a href="#doacao">Saiba Como Ajudar</a>
         </section>
 
+        <!-- SEÇÃO INSTITUCIONAL -->
         <section id="institucional" aria-labelledby="institucional-title">
-            <h2 id="institucional-title">Nossa Essência</h2>
+            <h2 id="institucional-title">Quem Somos</h2>
             
+            <article class="introducao">
+                <h3>Introdução</h3>
+                <p>Somos os <strong>Defensores do Rio</strong> — uma ponte que conecta e amplifica a voz das ONGs parceiras que atuam nas margens da Amazônia. Nosso propósito é dar visibilidade a quem transforma realidades ribeirinhas, fortalecendo a rede de solidariedade que protege o bioma e suas comunidades.</p>
+            </article>
+
             <article class="missao">
                 <h3>Missão</h3>
-                <p>Promover o fortalecimento das comunidades ribeirinhas da Amazônia, dando visibilidade às suas histórias e apoiando seu desenvolvimento sustentável.</p>
+                <p>Conectar a sociedade a iniciativas de impacto que promovem dignidade, inclusão e desenvolvimento sustentável para as comunidades ribeirinhas da Amazônia. Acreditamos que cada gesto de apoio pode transformar vidas e preservar histórias que fluem junto aos rios.</p>
             </article>
-            
+
             <article class="visao">
                 <h3>Visão</h3>
-                <p>Ser uma ponte entre a sociedade e os povos do rio, inspirando ações de respeito, solidariedade e preservação ambiental.</p>
+                <p>Ser a principal plataforma de visibilidade e captação de recursos para ONGs e projetos que atuam em prol dos direitos básicos e da conservação do bioma amazônico. Queremos inspirar uma cultura de engajamento e responsabilidade compartilhada.</p>
             </article>
-            
+
             <article class="valores">
-                <h3>Valores</h3>
+                <h3>Nossos Valores</h3>
                 <ul>
-                    <li>Respeito às culturas ribeirinhas</li>
-                    <li>Transparência nas ações</li>
-                    <li>Amor pela natureza e pelas pessoas</li>
+                    <li><strong>Empatia:</strong> valorizamos cada história e respeitamos as culturas locais.</li>
+                    <li><strong>Transparência:</strong> prestamos contas de cada recurso captado.</li>
+                    <li><strong>Conexão:</strong> aproximamos pessoas e causas com autenticidade.</li>
+                    <li><strong>Sustentabilidade:</strong> promovemos soluções que respeitam o meio ambiente.</li>
+                    <li><strong>Inclusão:</strong> garantimos dignidade e oportunidades para todos.</li>
+                    <li><strong>Impacto:</strong> medimos resultados de cada iniciativa apoiada.</li>
                 </ul>
             </article>
         </section>
 
-        <section id="projetos" aria-labelledby="projetos-title">
-            <h2 id="projetos-title">Projetos que Navegam por um Futuro Melhor</h2>
-            <p>Aqui você conhecerá as iniciativas que levam educação, saúde e sustentabilidade às margens do Rio.</p>
+        <!-- NOSSA HISTÓRIA -->
+        <section id="historia" aria-labelledby="historia-title">
+            <h2 id="historia-title">Nossa História</h2>
+
+            <article class="como-comecou">
+                <h3>Como Tudo Começou</h3>
+                <p>Fundada em 2018 por um grupo de biólogos, educadores e voluntários que atuavam na Amazônia, a <strong>Defensores do Rio</strong> nasceu da necessidade de dar visibilidade às comunidades ribeirinhas e conectá-las a recursos e apoio.</p>
+                <figure>
+                    <img src="imagens/primeiros-voluntarios.jpg" alt="Primeiros voluntários da ONG em comunidade ribeirinha" width="600">
+                    <figcaption>Primeiros voluntários da ONG em comunidade ribeirinha.</figcaption>
+                </figure>
+            </article>
+
+            <article class="conquistas">
+                <h3>Conquistas</h3>
+                <ul>
+                    <li><strong>2018:</strong> Fundação da organização com 3 projetos piloto.</li>
+                    <li><strong>2019:</strong> Primeira escola flutuante inaugurada.</li>
+                    <li><strong>2020:</strong> Expansão para 15 comunidades ribeirinhas.</li>
+                    <li><strong>2021:</strong> Certificação de ONG de utilidade pública.</li>
+                    <li><strong>2022:</strong> 1.000 famílias impactadas diretamente.</li>
+                    <li><strong>2023:</strong> Parceria com 12 ONGs locais estabelecida.</li>
+                    <li><strong>2024:</strong> Mais de 3.500 atendimentos em saúde realizados.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- PROJETOS RESUMO -->
+        <section id="projetos-resumo" aria-labelledby="projetos-resumo-title">
+            <h2 id="projetos-resumo-title">Projetos que Navegam por um Futuro Melhor</h2>
+            <p>Conheça algumas das iniciativas que levam educação, saúde e sustentabilidade às margens do Rio.</p>
             
             <article class="projeto">
                 <h3>Educação nas Águas</h3>
                 <p>Projeto de leitura e ensino digital para crianças ribeirinhas em parceria com voluntários e escolas locais.</p>
+                <img src="imagens/educacao.jpg" alt="Crianças ribeirinhas em atividade educacional" width="400">
             </article>
             
             <article class="projeto">
                 <h3>Saúde Ribeirinha</h3>
                 <p>Apoio a campanhas de vacinação, atendimento médico e conscientização sobre higiene e nutrição.</p>
+                <img src="imagens/saude.jpg" alt="Atendimento médico em comunidade ribeirinha" width="400">
             </article>
             
             <article class="projeto">
                 <h3>Economia Sustentável</h3>
                 <p>Fomento ao artesanato e à pesca sustentável, garantindo renda e preservação dos recursos naturais.</p>
+                <img src="imagens/economia.jpg" alt="Artesanato ribeirinho sustentável" width="400">
             </article>
+
+            <p><a href="projetos.html">Ver Todos os Projetos →</a></p>
         </section>
 
+        <!-- VOLUNTARIADO -->
         <section id="voluntariado" aria-labelledby="voluntariado-title">
             <h2 id="voluntariado-title">Faça Parte dessa Corrente</h2>
             <p>Quer transformar vidas? Seja voluntário e participe das ações diretamente nas comunidades ribeirinhas.</p>
-            <a href="#doacao">Quero Me Engajar</a>
+            <a href="cadastro.html">Quero Me Engajar</a>
         </section>
 
+        <!-- DOAÇÃO -->
         <section id="doacao" aria-labelledby="doacao-title">
             <h2 id="doacao-title">Doe e Ajude o Rio a Fluir</h2>
             <p>Com sua contribuição, apoiamos projetos reais que mudam o cotidiano de famílias que vivem da e pela natureza.</p>
-            <a href="#">Fazer uma Doação</a>
+            <a href="#formulario-doacao">Fazer uma Doação</a>
         </section>
 
+        <!-- CONTATO -->
+        <section id="contato" aria-labelledby="contato-title">
+            <h2 id="contato-title">Entre em Contato</h2>
+            <address>
+                <p><strong>Defensores do Rio - ONG</strong></p>
+                <p>Avenida das Águas, 123 - Centro</p>
+                <p>Manaus - AM - CEP: 69000-000</p>
+                <p>Telefone: <a href="tel:+559232345678">(92) 3234-5678</a></p>
+                <p>WhatsApp: <a href="https://wa.me/5592999887766" target="_blank">(92) 99988-7766</a></p>
+                <p>E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
+                <p>Atendimento: Segunda a Sexta, das 8h às 18h</p>
+            </address>
+        </section>
+
+        <!-- REDES SOCIAIS -->
+        <section id="redes" aria-labelledby="redes-title">
+            <h2 id="redes-title">Redes Sociais</h2>
+            <p>Acompanhe nosso trabalho e veja o impacto em tempo real:</p>
+            <ul>
+                <li><a href="https://www.instagram.com/defensoresdorio" target="_blank" rel="noopener">Instagram: @defensoresdorio</a></li>
+                <li><a href="https://www.facebook.com/DefensoresdoRio" target="_blank" rel="noopener">Facebook: /DefensoresdoRio</a></li>
+                <li><a href="https://www.youtube.com/@DefensoresdoRio" target="_blank" rel="noopener">YouTube: Defensores do Rio Oficial</a></li>
+                <li><a href="https://www.linkedin.com/company/defensoresdorio" target="_blank" rel="noopener">LinkedIn: Defensores do Rio</a></li>
+            </ul>
+        </section>
     </main>
 
+    <!-- RODAPÉ -->
     <footer>
         <div class="footer-trust-bar">
             <span>✓ 100% Transparente</span>
@@ -271,30 +170,19 @@ Em resumo: Este bloco é estruturalmente correto, semanticamente adequado e o co
         </div>
         
         <div class="footer-content">
-            <div class="footer-contact">
-                <h3>Entre em Contato:</h3>
-                <div>
-                    <a href="mailto:contato@defensoresdorio.org">📧 contato@defensoresdorio.org</a> 
-                    | 
-                    <a href="tel:+5592987654321">📱 (92) 98765-4321</a>
-                </div>
-            </div>
-
-            <div class="footer-legal">
-                <a href="#">Política de Privacidade</a> 
-                | 
-                <a href="#">Termos de Uso</a> 
-                | 
-                <a href="#">Transparência</a>
-            </div>
-
-            <p>© 2025 Defensores do Rio. Todos os direitos reservados.</p>
+            <p><strong>Defensores do Rio</strong></p>
+            <p>CNPJ: 12.345.678/0001-90</p>
+            <p>Telefone: <a href="tel:+559232345678">(92) 3234-5678</a> | E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
             
-            <p class="footer-slogan">
-                "Unidos pelas águas que nos sustentam" 🌊
-            </p>
+            <nav aria-label="Navegação do Rodapé">
+                <a href="index.html">Início</a> | 
+                <a href="projetos.html">Projetos</a> | 
+                <a href="cadastro.html">Cadastre-se</a>
+            </nav>
+            
+            <p>&copy; 2025 Defensores do Rio. Todos os direitos reservados.</p>
+            <p>"Unidos pelas águas que nos sustentam" 🌊</p>
         </div>
     </footer>
-
 </body>
 </html>
