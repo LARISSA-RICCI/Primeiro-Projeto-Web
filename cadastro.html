@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Cadastro - Defensores do Rio</title>
+</head>
+<body>
+    <!-- CABEÇALHO -->
+    <header>
+        <img src="imagens/logo.png" alt="Logo Defensores do Rio" width="150">
+        <h1>Defensores do Rio</h1>
+        
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <section id="cadastro" aria-labelledby="cadastro-title">
+            <h2 id="cadastro-title">Cadastro de Voluntário</h2>
+            <p>Preencha os dados abaixo para se cadastrar como voluntário e fazer parte da nossa missão de apoiar comunidades ribeirinhas da Amazônia.</p>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="formCadastro" action="#" method="post" novalidate>
+                
+                <!-- TIPO DE CADASTRO -->
+                <fieldset>
+                    <legend>Tipo de Cadastro</legend>
+                    
+                    <label for="tipoCadastro">Escolha o tipo de cadastro:</label>
+                    <select id="tipoCadastro" name="tipoCadastro" required>
+                        <option value="">Selecione...</option>
+                        <option value="voluntario">Voluntário</option>
+                        <option value="ong">ONG Parceira</option>
+                        <option value="apoiador">Apoiador/Doador</option>
+                    </select>
+                </fieldset>
+
+                <!-- DADOS PESSOAIS -->
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    
+                    <label for="nomeCompleto">Nome Completo: *</label>
+                    <input 
+                        type="text" 
+                        id="nomeCompleto" 
+                        name="nomeCompleto" 
+                        placeholder="Digite seu nome completo"
+                        required
+                        minlength="3"
+                        maxlength="100">
+                    
+                    <label for="email">E-mail: *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="seuemail@exemplo.com"
+                        required>
+                    
+                    <label for="cpf">CPF: *</label>
+                    <input 
+                        type="text" 
+                        id="cpf" 
+                        name="cpf" 
+                        placeholder="000.000.000-00"
+                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                        maxlength="14"
+                        required>
+                    <small>Formato: 000.000.000-00</small>
+                    
+                    <label for="telefone">Telefone: *</label>
+                    <input 
+                        type="tel" 
+                        id="telefone" 
+                        name="telefone" 
+                        placeholder="(00) 00000-0000"
+                        pattern="\(\d{2}\) \d{5}-\d{4}"
+                        maxlength="15"
+                        required>
+                    <small>Formato: (00) 00000-0000</small>
+                    
+                    <label for="dataNascimento">Data de Nascimento: *</label>
+                    <input 
+                        type="date" 
+                        id="dataNascimento" 
+                        name="dataNascimento" 
+                        required
+                        min="1900-01-01"
+                        max="2010-12-31">
+                </fieldset>
+
+                <!-- ENDEREÇO -->
+                <fieldset>
+                    <legend>Endereço</legend>
+                    
+                    <label for="cep">CEP: *</label>
+                    <input 
+                        type="text" 
+                        id="cep" 
+                        name="cep" 
+                        placeholder="00000-000"
+                        pattern="\d{5}-\d{3}"
+                        maxlength="9"
+                        required>
+                    <small>Formato: 00000-000</small>
+                    
+                    <label for="endereco">Endereço: *</label>
+                    <input 
+                        type="text" 
+                        id="endereco" 
+                        name="endereco" 
+                        placeholder="Rua, Avenida, etc."
+                        required
+                        maxlength="200">
+                    
+                    <label for="numero">Número:</label>
+                    <input 
+                        type="text" 
+                        id="numero" 
+                        name="numero" 
+                        placeholder="Número ou S/N"
+                        maxlength="10">
+                    
+                    <label for="complemento">Complemento:</label>
+                    <input 
+                        type="text" 
+                        id="complemento" 
+                        name="complemento" 
+                        placeholder="Apto, Casa, Bloco, etc."
+                        maxlength="50">
+                    
+                    <label for="bairro">Bairro:</label>
+                    <input 
+                        type="text" 
+                        id="bairro" 
+                        name="bairro" 
+                        placeholder="Nome do bairro"
+                        maxlength="100">
+                    
+                    <label for="cidade">Cidade: *</label>
+                    <input 
+                        type="text" 
+                        id="cidade" 
+                        name="cidade" 
+                        placeholder="Nome da cidade"
+                        required
+                        maxlength="100">
+                    
+                    <label for="estado">Estado: *</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecione...</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </fieldset>
+
+                <!-- ÁREAS DE INTERESSE (OPCIONAL) -->
+                <fieldset>
+                    <legend>Áreas de Interesse (Opcional)</legend>
+                    
+                    <label>
+                        <input type="checkbox" name="interesse" value="educacao">
+                        Educação
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" name="interesse" value="saude">
+                        Saúde
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" name="interesse" value="meio-ambiente">
+                        Meio Ambiente
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" name="interesse" value="artesanato">
+                        Artesanato e Economia Local
+                    </label>
+                </fieldset>
+
+                <!-- TERMOS E CONDIÇÕES -->
+                <fieldset>
+                    <legend>Termos e Condições</legend>
+                    
+                    <label>
+                        <input type="checkbox" name="aceitaTermos" required>
+                        Li e aceito os <a href="#termos" target="_blank">Termos de Uso</a> e a <a href="#privacidade" target="_blank">Política de Privacidade</a> *
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" name="aceitaNewsletter">
+                        Desejo receber novidades e informações sobre projetos por e-mail
+                    </label>
+                </fieldset>
+
+                <!-- BOTÕES -->
+                <div class="botoes">
+                    <button type="reset">Limpar Formulário</button>
+                    <button type="submit">Cadastrar</button>
+                </div>
+
+                <p><small>* Campos obrigatórios</small></p>
+            </form>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p><strong>Defensores do Rio</strong></p>
+        <p>CNPJ: 12.345.678/0001-90</p>
+        <p>Telefone: <a href="tel:+559232345678">(92) 3234-5678</a> | E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
+        
+        <nav aria-label="Navegação do Rodapé">
+            <a href="index.html">Início</a> | 
+            <a href="projetos.html">Projetos</a> | 
+            <a href="cadastro.html">Cadastre-se</a>
+        </nav>
+        
+        <p>&copy; 2025 Defensores do Rio. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT PARA MÁSCARAS -->
+    <script>
+        // Máscara para CPF (000.000.000-00)
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        // Máscara para Telefone ((00) 00000-0000)
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        // Máscara para CEP (00000-000)
+        document.getElementById('cep').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 8) {
+                value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        // Validação do formulário
+        document.getElementById('formCadastro').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            if (this.checkValidity()) {
+                alert('Cadastro realizado com sucesso! Em breve entraremos em contato.');
+                this.reset();
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+            }
+        });
+    </script>
+</body>
+</html>

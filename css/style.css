@@ -1,0 +1,487 @@
+/* ============================================
+   DEFENSORES DO RIO - STYLESHEET PRINCIPAL
+   ============================================ */
+
+:root {
+    /* Paleta de Cores (Tons naturais e acessibilidade) */
+    --color-primary: #1877f2;           /* Azul institucional */
+    --color-secondary: #28a745;         /* Verde natureza/ação */
+    --color-accent: #FFB800;            /* Amarelo vibrante */
+    --color-danger: #E63946;            /* Vermelho alerta */
+    --color-background: #f3f4f6;        /* Fundo claro */
+    --color-surface: #ffffff;           /* Superfícies */
+    --color-dark: #1a2327;              /* Texto destaque */
+    --color-neutral-100: #e4e7ea;       /* Cinza claro */
+    --color-neutral-200: #bfc7cd;       /* Cinza intermediário */
+
+    /* Tipografia - Google Fonts */
+    --font-family-base: 'Montserrat', 'Arial', sans-serif;
+    --font-size-xs: 0.75rem;     /* 12px para detalhes */
+    --font-size-sm: 0.875rem;    /* 14px corpo pequeno */
+    --font-size-base: 1rem;      /* 16px padrão */
+    --font-size-lg: 1.25rem;     /* 20px destaque */
+    --font-size-h2: 2rem;        /* 32px subtítulo */
+    --font-size-h1: 2.75rem;     /* 44px chamado principal */
+
+    /* Espaçamentos modulares */
+    --spacing-xxs: 0.5rem;  /* 8px */
+    --spacing-xs: 1rem;     /* 16px */
+    --spacing-sm: 1.5rem;   /* 24px */
+    --spacing-md: 2rem;     /* 32px */
+    --spacing-lg: 2.5rem;   /* 40px */
+    --spacing-xl: 3.5rem;   /* 56px */
+
+    /* Bordas e efeitos */
+    --border-radius: 0.5rem;           /* 8px arredondamento padrão */
+    --box-shadow: 0 2px 8px rgba(24, 119, 242, 0.1); /* Sombra sutil */
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESET E BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-dark);
+    background: var(--color-background);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* ============================================
+   TIPOGRAFIA
+   ============================================ */
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-dark);
+}
+
+p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-dark);
+}
+
+strong {
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+/* ============================================
+   HEADER - CABEÇALHO
+   ============================================ */
+header {
+    background: linear-gradient(135deg, #1877f2 0%, #28a745 100%);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    color: white;
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-xs);
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+header h1 a:hover {
+    opacity: 0.9;
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    color: white;
+    font-weight: 500;
+    padding: var(--spacing-xxs) var(--spacing-xs);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.botao-destaque {
+    background: var(--color-accent);
+    color: var(--color-dark);
+    font-weight: 600;
+    padding: var(--spacing-xxs) var(--spacing-sm);
+}
+
+.botao-destaque:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+/* ============================================
+   MAIN - CONTEÚDO PRINCIPAL
+   ============================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-xs);
+}
+
+/* ============================================
+   SEÇÕES
+   ============================================ */
+section {
+    background: var(--color-surface);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+section h2 {
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(135deg, rgba(24, 119, 242, 0.9), rgba(40, 167, 69, 0.9)),
+                url('../imagens/amazonia-rio.png') center/cover;
+    color: white;
+    text-align: center;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+#hero h2 {
+    color: white;
+    border: none;
+    font-size: var(--font-size-h1);
+}
+
+#hero p {
+    color: white;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ============================================
+   ARTICLES
+   ============================================ */
+article {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--color-neutral-100);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-secondary);
+}
+
+article h3 {
+    color: var(--color-primary);
+}
+
+article ul {
+    list-style-position: inside;
+    padding-left: var(--spacing-xs);
+}
+
+article li {
+    margin-bottom: var(--spacing-xxs);
+}
+
+/* ============================================
+   BOTÕES
+   ============================================ */
+.botao-primario,
+a[href="#doacao"],
+section a {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.botao-primario:hover,
+a[href="#doacao"]:hover,
+section a:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* ============================================
+   IMAGENS E FIGURAS
+   ============================================ */
+figure {
+    margin: var(--spacing-md) 0;
+    text-align: center;
+}
+
+figure img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin: 0 auto;
+}
+
+figcaption {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-200);
+    margin-top: var(--spacing-xxs);
+    font-style: italic;
+}
+
+/* ============================================
+   CONTATO E ENDEREÇO
+   ============================================ */
+address {
+    font-style: normal;
+    line-height: 1.8;
+}
+
+address p {
+    margin-bottom: var(--spacing-xxs);
+}
+
+address a {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* ============================================
+   FOOTER - RODAPÉ
+   ============================================ */
+footer {
+    background: var(--color-dark);
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-xs);
+    text-align: center;
+}
+
+.footer-trust-bar {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.footer-content p {
+    color: white;
+    margin-bottom: var(--spacing-xxs);
+}
+
+.footer-content a {
+    color: var(--color-accent);
+}
+
+.footer-content a:hover {
+    color: white;
+}
+
+footer nav {
+    margin: var(--spacing-sm) 0;
+}
+
+footer nav a {
+    color: white;
+    margin: 0 var(--spacing-xxs);
+}
+
+/* ============================================
+   FORMULÁRIOS
+   ============================================ */
+form {
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+fieldset {
+    border: 2px solid var(--color-neutral-100);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+legend {
+    font-weight: 600;
+    color: var(--color-primary);
+    padding: 0 var(--spacing-xxs);
+}
+
+label {
+    display: block;
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xxs);
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: var(--spacing-xxs) var(--spacing-xs);
+    border: 2px solid var(--color-neutral-100);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.1);
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: var(--spacing-xxs);
+}
+
+small {
+    display: block;
+    color: var(--color-neutral-200);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xxs);
+}
+
+button[type="submit"],
+button[type="reset"] {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: var(--spacing-sm);
+    margin-right: var(--spacing-xs);
+}
+
+button[type="submit"]:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+button[type="reset"] {
+    background: var(--color-neutral-200);
+    color: var(--color-dark);
+}
+
+button[type="reset"]:hover {
+    background: var(--color-neutral-100);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --font-size-h1: 2rem;
+        --font-size-h2: 1.5rem;
+        --spacing-lg: 1.5rem;
+    }
+
+    header {
+        padding: var(--spacing-sm);
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    main {
+        padding: var(--spacing-sm) var(--spacing-xs);
+    }
+
+    section {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+.text-center {
+    text-align: center;
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mt-1 {
+    margin-top: var(--spacing-xs);
+}
+
+.hidden {
+    display: none;
+}
