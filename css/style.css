@@ -108,13 +108,95 @@ strong {
 /* ============================================
    HEADER - CABEÇALHO
    ============================================ */
+
+   header {
+  background: linear-gradient(270deg, #08a70d, #1569d8);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+
+  /* Altura e espaçamento */
+  padding: 20px 40px; /* diminui o padding vertical */
+  height: auto; /* remove altura fixa se houver */
+  display: flex;
+  align-items: center; /* centraliza verticalmente o conteúdo */
+  justify-content: space-between; /* distribui logo e menu */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header h1 {
+  font-size: 2.2rem;
+  margin: 0 20px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
 header {
-    background: linear-gradient(135deg, #1877f2 0%, #28a745 100%);
+    background: linear-gradient(135deg, #1569d8 0%, #08a70d 100%);
     padding: var(--spacing-md) var(--spacing-lg);
     box-shadow: var(--box-shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+header img {
+    height: 90px; 
+    width: 100px;
+    margin: 0 40px 0 0; /
+    vertical-align: middle;
+    border-radius: var(--border-radius); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+button.gradient {
+  background: linear-gradient(270deg, #08a70d, #1569d8);
+  background-size: 200% 200%;
+  color: #fff;
+  border: none;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 70%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header {
+  background: linear-gradient(270deg, #1569d8, #08a70d, #098ad0, hsl(104, 97%, 48%));
+  background-size: 800% 800%;
+  animation: gradientMove 12s ease infinite;
+  padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+}
+
+/* Animação do gradiente */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 16px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+nav a:hover {
+  color: #ffe600;
+  border-bottom: 2px solid #0b0a00;
 }
 
 header h1 {
@@ -122,10 +204,37 @@ header h1 {
     font-size: var(--font-size-h2);
     margin-bottom: var(--spacing-xs);
 }
+@media (max-width: 1200px) { /* telas grandes */}
+@media (max-width: 992px) { /* tablets */}
+@media (max-width: 768px) { /* celulares grandes */}
+@media (max-width: 576px) { /* celulares pequenos */}
+@media (max-width: 400px) { /* extras */}
 
 header h1 a {
     color: white;
     text-decoration: none;
+}
+header:hover {
+  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.01);
+}
+header h1 {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+button.gradient {
+  background: linear-gradient(270deg, #08a70d, #1569d8);
+  background-size: 200% 200%;
+  color: #fff;
+  border: none;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 header h1 a:hover {
@@ -419,6 +528,16 @@ button[type="reset"] {
     transition: var(--transition);
     margin-top: var(--spacing-sm);
     margin-right: var(--spacing-xs);
+}
+header {
+    padding: 5px 10px; /* Bem mais fino no alto e em cada lado */
+    /* ...resto igual... */
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 56px; /* opcional: força uma altura mínima menor */
 }
 
 button[type="submit"]:hover {
