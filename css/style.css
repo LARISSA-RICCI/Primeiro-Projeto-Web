@@ -43,7 +43,7 @@ img {
 header {
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
-    padding: 0,2.rem 0,2.rem;
+    padding: 0,1.rem 0,1.rem;
     text-align: center;
     box-shadow: 0 4px 20px rgba(45, 216, 129, 0.3);
     position: sticky;
@@ -78,7 +78,7 @@ nav ul {
 nav a {
     display: block;
     color: var(--branco);
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 0.5rem;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 25px;
     font-weight: 600;
@@ -91,13 +91,14 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
     border-color: var(--branco);
+    
 }
 
 /* ========== CONTEÚDO PRINCIPAL ========== */
 main {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
+    margin: 2rem auto;
+    padding: 1rem;
     background: var(--branco);
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -115,7 +116,7 @@ h2 {
     color: var(--verde-escuro);
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.1rem;
     border-bottom: 4px solid var(--verde-principal);
     display: inline-block;
 }
@@ -164,7 +165,7 @@ strong {
 .cta-button {
     display: inline-block;
     margin: 1rem 0.5rem;
-    padding: 1rem 2.5rem;
+    padding: 1rem 0.5rem;
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
     border-radius: 30px;
@@ -184,7 +185,7 @@ strong {
 /* ========== CARDS MVV ========== */
 .mvv-item {
     background: linear-gradient(to right, var(--fundo-claro) 0%, var(--branco) 100%);
-    padding: 2rem;
+    padding: 1rem;
     margin-bottom: 1.5rem;
     border-radius: 12px;
     border-left: 6px solid var(--verde-principal);
@@ -201,7 +202,7 @@ strong {
 #cta {
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
-    padding: 3rem 2rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 8px 25px rgba(45, 216, 129, 0.3);
@@ -225,7 +226,7 @@ strong {
 /* ========== PROJETOS ========== */
 .projeto {
     background: var(--fundo-claro);
-    padding: 2.5rem;
+    padding: 0.5rem;
     margin-bottom: 3rem;
     border-radius: 15px;
     border: 2px solid #d1fae5;
@@ -285,7 +286,7 @@ strong {
 blockquote {
     background: #ecfdf5;
     border-left: 6px solid var(--verde-hover);
-    padding: 1.5rem;
+    padding: 0.5rem;
     margin: 1.5rem 0;
     border-radius: 8px;
     font-style: italic;
@@ -302,7 +303,7 @@ blockquote cite {
 .cta-doacao {
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
-    padding: 3rem 2rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 15px;
     text-align: center;
     margin-top: 2rem;
@@ -315,7 +316,7 @@ blockquote cite {
 .cta-doacao a {
     display: inline-block;
     margin-top: 1rem;
-    padding: 1rem 2.5rem;
+    padding: 0.5rem 0.5rem;
     background: var(--branco);
     color: var(--verde-escuro);
     border-radius: 30px;
@@ -352,7 +353,7 @@ fieldset {
 legend {
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
-    padding: 0.8rem 1.5rem;
+    padding: 0.1rem 0.1rem;
     border-radius: 25px;
     font-weight: 700;
     font-size: 1.1rem;
@@ -373,7 +374,7 @@ input[type="tel"],
 input[type="date"],
 select {
     width: 100%;
-    padding: 0.9rem;
+    padding: 0.1rem;
     border: 2px solid var(--cinza-borda);
     border-radius: 8px;
     font-size: 1rem;
@@ -446,7 +447,7 @@ button[type="reset"]:hover {
 footer {
     background: linear-gradient(135deg, var(--verde-hover) 0%, var(--verde-escuro) 100%);
     color: var(--branco);
-    padding: 2.5rem 2rem;
+    padding: 0.1rem 0.1rem;
     text-align: center;
     margin-top: 4rem;
 }
@@ -504,8 +505,8 @@ footer nav a:hover {
     }
 
     main {
-        margin: 1.5rem 1rem;
-        padding: 1.5rem;
+        margin: 0.1rem 0.1rem;
+        padding: 0.1rem;
     }
 
     h2 {
