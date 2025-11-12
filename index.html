@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="favicon.ico">
     <title>Institucional - Defensores do Rio</title>
- <link rel="stylesheet" href="css/style.css">
 
+ <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  
     <!-- CABEÇALHO -->
     <header>
-    <img src="imagens/logo.png" alt="Logo Defensores do Rio">
-    
+    <img src ="imagens/logo.png" alt="imagens das primeiras pessoas voluntarias"
+alt="Voluntários Defensores do Rio">
+
     <h1>Defensores do Rio</h1>
 
         <nav aria-label="Navegação Principal">
@@ -20,19 +22,19 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="projetos.html">Projetos</a></li>
                 <li><a href="cadastro.html">Cadastre-se</a></li>
-                <li><a href="#voluntariado">Voluntariado</a></li>
-                <li><a href="#doacoes">Doe Agora</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
-     <img src ="imagens/primeiros-voluntarios.png"
+     <img src ="imagens/primeiros-voluntarios.png" alt="imagens das primeiras pessoas voluntarias"
+
      alt="Voluntários Defensores do Rio">
-    <main>
         <!-- SEÇÃO INTRODUÇÃO -->
-       <main>
-  <section id="banner">
+
+       <main id="app-content">
+       <section id="banner"> ...
+
     <h2>Bem-vindo à Defensores do Rio!</h2>
     <p>
       Conectando e fortalecendo comunidades ribeirinhas da Amazônia por meio de educação, saúde e desenvolvimento sustentável.
@@ -70,14 +72,31 @@
   </section>
   <section id="impacto">
     <h2>Impacto Social</h2>
+    <h1> Assista nosso video institucional </h1>
     <div class="intro-doacoes">
       <p>
         Mais de 15 comunidades atendidas, 10 mil pessoas beneficiadas, 100 voluntários engajados.<br>
         Escolas flutuantes, bibliotecas de barco, assistência médica de difícil acesso e geração de renda sustentável.
       </p>
-<canvas id="graficoImpacto" width="390" height="260" style="max-width:100%;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="graficoImpacto" width="320" height="260" style="max-width:100%;"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="main.js" defer></script>
+<body>
+  <video controls width="500" muted autoplay>
+  <source src="videosmeu-video.mp4" type="video/mp4">
+  </video>
+</body>
+</html>
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (SPA?.init) SPA.init();
+  if (FormValidator?.init) FormValidator.init();
+  if (InputMasks?.init) InputMasks.init();
+  if (Interactions?.init) Interactions.init();
+  if (CharCounter?.init) CharCounter.init();
+  if (Accessibility?.init) Accessibility.init();
+
+  // O gráfico também pode ficar dentro do mesmo bloco
   const ctx = document.getElementById('graficoImpacto').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -86,9 +105,7 @@
       datasets: [{
         label: 'Impacto Social',
         data: [15, 10000, 6, 100],
-        backgroundColor: [
-          '#2dd881','#f4d35e','#508bf9','#43aa8b'
-        ],
+        backgroundColor: ['#2dd881', '#f4d35e', '#508bf9', '#43aa8b'],
         borderRadius: 10,
         borderSkipped: false
       }]
@@ -97,11 +114,6 @@
       responsive: true,
       plugins: {
         legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => ctx.parsed.y.toLocaleString()
-          }
-        },
         title: {
           display: true,
           text: 'Impacto Defensores do Rio (2020-2025)',
@@ -110,54 +122,14 @@
         }
       },
       scales: {
-        y: {
-          beginAtZero: true,
-          ticks: { color: "#333" }
-        },
+        y: { beginAtZero: true, ticks: { color: "#333" } },
         x: { ticks: { color: "#2dd881" } }
       }
     }
   });
+});
 </script>
-
-      </main>
-    </div>
-  </section>
-
-  <section id="depoimentos">
-    <h2>Depoimentos</h2>
-    <article class="depoimentos">
-      <blockquote>
-        <p>
-          "A Defensores do Rio trouxe de volta o sorriso e o orgulho para nossa comunidade. Hoje, nossos filhos têm acesso à escola, cuidado e novas oportunidades."
-        </p>
-        <cite>— Seu José, líder comunitário</cite>
-      </blockquote>
-      <blockquote>
-        <p>
-          "Participar da ONG me tornou uma pessoa melhor. O trabalho voluntário transforma realidades — inclusive a nossa."
-        </p>
-        <cite>— Fernanda, voluntária</cite>
-      </blockquote>
-    </article>
-  </section>
-  
-  <section id="cta">
-    <h2>Seja um Defensor</h2>
-    <p>
-      Se você quer fazer parte dessa transformação, junte-se a nossa equipe ou apoie um de nossos projetos!
-    </p>
-    <a href="cadastro.html" class="cta-button">Seja Voluntário</a>
-    <a href="projetos.html" class="cta-button">Conheça os Projetos</a>
-  </section>
-
-  <section id="contato">
-    <h2>Fale Conosco</h2>
-    <p>E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
-    <p>WhatsApp: <a href="https://wa.me/5592999887766" target="_blank">(92) 99988-7766</a></p>
-  </section>
-</main>
-    <!-- RODAPÉ -->
+   <!-- RODAPÉ -->
     <footer>
         <div class="footer-trust-bar">
             <span>✓ 100% Transparente</span>
@@ -171,10 +143,7 @@
             <p><strong>Defensores do Rio</strong></p>
             <p>CNPJ: 12.345.678/0001-90</p>
             <p>Telefone: <a href="tel:+559232345678">(92) 3234-5678</a> | E-mail: <a href="mailto:contato@defensoresdorio.org.br">contato@defensoresdorio.org.br</a></p>
-            
-            <p>&copy; 2025 Defensores do Rio. Todos os direitos reservados.</p>
+            <p>© 2025 Defensores do Rio. Todos os direitos reservados.</p>
             <p>"Unidos pelas águas que nos sustentam" 🌊</p>
         </div>
     </footer>
-</body>
-</html>

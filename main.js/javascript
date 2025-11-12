@@ -1,0 +1,910 @@
+// ===================================
+// DEFENSORES DO RIO - SISTEMA WEB
+// Versão: 1.0.0 - Entrega III
+// ===================================
+
+// ===================================
+// SISTEMA SPA (Single Page Application)
+// ===================================
+
+const SPA = {
+  currentPage: 'inicio',
+  
+  init() {
+    this.setupNavigation();
+    this.setupSmoothScroll();
+  },
+  
+  setupNavigation() {
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = e.target.getAttribute('href');
+        
+        // Se for link interno (#), prevenir comportamento padrão
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const sectionId = href.substring(1);
+          this.scrollToSection(sectionId);
+        }
+      });
+    });
+  },
+  
+  setupSmoothScroll() {
+    // Scroll suave para todos os links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  },
+  
+  scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+};
+
+// ===================================
+// VALIDAÇÃO AVANÇADA DE FORMULÁRIOS
+// ===================================
+
+const FormValidator = {
+  init() {
+    const form = document.getElementById('formCadastro');
+    if (!form) return;
+    
+    this.setupForm(form);
+    this.setupRealTimeValidation(form);
+  },
+  
+  setupForm(form) {
+    // Remover validação nativa do HTML5
+    form.setAttribute('novalidate', '');
+    
+    // Interceptar submit
+    form.addEventListener('submit', (e) => this.handleSubmit(e, form));
+    
+    // Botão de reset
+    const resetBtn = form.querySelector('button[type="reset"]');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => this.clearAllErrors(form));
+    }
+  },
+  
+  setupRealTimeValidation(form) {
+    const inputs = form.querySelectorAll('input:not([type="checkbox"]), select, textarea');
+    
+    inputs.forEach(input => {
+      // Validação ao perder foco
+      input.addEventListener('blur', () => {
+        if (input.value.trim() !== '') {
+          this.validateField(input);
+        }
+      });
+      
+      // Limpar erro ao digitar
+      input.addEventListener('input', () => {
+        this.clearError(input);
+      });
+      
+      // Validação ao pressionar Enter
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.type !== 'textarea') {
+          e.preventDefault();
+          this.validateField(input);
+        }
+      });
+    });
+  },
+  
+  validateField(field) {
+    const value = field.value.trim();
+    const type = field.type;
+    const id = field.id;
+    const name = field.name;
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Campo obrigatório
+    if (field.hasAttribute('required') && !value) {
+      isValid = false;
+      errorMessage = '⚠ Este campo é obrigatório';
+    }
+    
+    // Validações específicas por campo
+    else if (value) {
+      switch(id) {
+        case 'nomeCompleto':
+          if (value.length < 3) {
+            isValid = false;
+            errorMessage = '⚠ O nome deve ter no mínimo 3 caracteres';
+          } else if (!/^[a-záàâãéèêíïóôõöúçñ\s]+$/i.test(value)) {
+            isValid = false;
+            errorMessage = '⚠ O nome deve conter apenas letras';
+          } else if (value.split(' ').length < 2) {
+            isValid = false;
+            errorMessage = '⚠ Digite o nome completo (nome e sobrenome)';
+          }
+          break;
+          
+        case 'email':
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            isValid = false;
+            errorMessage = '⚠ Digite um e-mail válido (exemplo: nome@email.com)';
+          }
+          break;
+          
+        case 'cpf':
+          const cpfLimpo = value.replace(/\D/g, '');
+          if (cpfLimpo.length !== 11) {
+            isValid = false;
+            errorMessage = '⚠ CPF deve ter 11 dígitos';
+          } else if (!this.validarCPF(cpfLimpo)) {
+            isValid = false;
+            errorMessage = '⚠ CPF inválido';
+          }
+          break;
+          
+        case 'telefone':
+          const telLimpo = value.replace(/\D/g, '');
+          if (telLimpo.length < 10) {
+            isValid = false;
+            errorMessage = '⚠ Telefone incompleto';
+          }
+          break;
+          
+        case 'cep':
+          const cepLimpo = value.replace(/\D/g, '');
+          if (cepLimpo.length !== 8) {
+            isValid = false;
+            errorMessage = '⚠ CEP deve ter 8 dígitos';
+          }
+          break;
+          
+        case 'dataNascimento':
+          const hoje = new Date();
+          const nascimento = new Date(value);
+          const idade = hoje.getFullYear() - nascimento.getFullYear();
+          
+          if (nascimento > hoje) {
+            isValid = false;
+            errorMessage = '⚠ Data de nascimento não pode ser futura';
+          } else if (idade < 16) {
+            isValid = false;
+            errorMessage = '⚠ Você deve ter no mínimo 16 anos';
+          } else if (idade > 120) {
+            isValid = false;
+            errorMessage = '⚠ Data de nascimento inválida';
+          }
+          break;
+          
+        case 'endereco':
+          if (value.length < 5) {
+            isValid = false;
+            errorMessage = '⚠ Endereço muito curto';
+          }
+          break;
+          
+        case 'cidade':
+          if (value.length < 3) {
+            isValid = false;
+            errorMessage = '⚠ Nome da cidade inválido';
+          } else if (!/^[a-záàâãéèêíïóôõöúçñ\s]+$/i.test(value)) {
+            isValid = false;
+            errorMessage = '⚠ Nome da cidade deve conter apenas letras';
+          }
+          break;
+      }
+    }
+    
+    // Validação de select
+    if (field.tagName === 'SELECT' && field.hasAttribute('required') && value === '') {
+      isValid = false;
+      errorMessage = '⚠ Selecione uma opção';
+    }
+    
+    // Mostrar ou limpar erro
+    if (!isValid) {
+      this.showError(field, errorMessage);
+    } else {
+      this.clearError(field);
+    }
+    
+    return isValid;
+  },
+  
+  validarCPF(cpf) {
+    // Validação matemática do CPF
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+      return false;
+    }
+    
+    let soma = 0;
+    let resto;
+    
+    // Validar primeiro dígito
+    for (let i = 1; i <= 9; i++) {
+      soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+    
+    // Validar segundo dígito
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+      soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+    
+    return true;
+  },
+  
+  showError(field, message) {
+    this.clearError(field);
+    
+    // Adicionar classe de erro
+    field.classList.add('input-error');
+    field.setAttribute('aria-invalid', 'true');
+    
+    // Criar elemento de erro
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.setAttribute('role', 'alert');
+    
+    // Inserir erro após o campo
+    const parent = field.parentElement;
+    const small = parent.querySelector('small');
+    
+    if (small) {
+      parent.insertBefore(errorDiv, small);
+    } else {
+      field.insertAdjacentElement('afterend', errorDiv);
+    }
+    
+    // Efeito de shake
+    field.style.animation = 'shake 0.3s';
+    setTimeout(() => {
+      field.style.animation = '';
+    }, 300);
+  },
+  
+  clearError(field) {
+    field.classList.remove('input-error');
+    field.removeAttribute('aria-invalid');
+    
+    const parent = field.parentElement;
+    const errorMessage = parent.querySelector('.error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+  },
+  
+  clearAllErrors(form) {
+    const errors = form.querySelectorAll('.error-message');
+    errors.forEach(error => error.remove());
+    
+    const inputsWithError = form.querySelectorAll('.input-error');
+    inputsWithError.forEach(input => {
+      input.classList.remove('input-error');
+      input.removeAttribute('aria-invalid');
+    });
+  },
+  
+  handleSubmit(e, form) {
+    e.preventDefault();
+    
+    // Limpar erros anteriores
+    this.clearAllErrors(form);
+    
+    // Validar todos os campos
+    const inputs = form.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), select, textarea');
+    let isFormValid = true;
+    let firstInvalidField = null;
+    
+    inputs.forEach(input => {
+      if (!this.validateField(input)) {
+        isFormValid = false;
+        if (!firstInvalidField) {
+          firstInvalidField = input;
+        }
+      }
+    });
+    
+    // Validar checkboxes obrigatórios
+    const checkboxRequired = form.querySelectorAll('input[type="checkbox"][required]');
+    checkboxRequired.forEach(checkbox => {
+      if (!checkbox.checked) {
+        isFormValid = false;
+        this.showError(checkbox, '⚠ Você deve aceitar os termos');
+        if (!firstInvalidField) {
+          firstInvalidField = checkbox;
+        }
+      }
+    });
+    
+    // Se houver erros, focar no primeiro campo inválido
+    if (!isFormValid) {
+      this.showFormError('❌ Por favor, corrija os erros antes de enviar o formulário');
+      if (firstInvalidField) {
+        firstInvalidField.focus();
+        firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
+    // Formulário válido - processar dados
+    this.submitForm(form);
+  },
+  
+  showFormError(message) {
+    // Remover mensagem anterior
+    const existingError = document.querySelector('.form-error-global');
+    if (existingError) {
+      existingError.remove();
+    }
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error-global';
+    errorDiv.innerHTML = `
+      <strong>${message}</strong>
+      <p>Verifique os campos destacados em vermelho.</p>
+    `;
+    
+    const form = document.getElementById('formCadastro');
+    form.insertAdjacentElement('beforebegin', errorDiv);
+    
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Remover após 8 segundos
+    setTimeout(() => errorDiv.remove(), 8000);
+  },
+  
+  submitForm(form) {
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Converter FormData para objeto
+    for (let [key, value] of formData.entries()) {
+      if (key === 'interesse') {
+        if (!data.interesse) data.interesse = [];
+        data.interesse.push(value);
+      } else {
+        data[key] = value;
+      }
+    }
+    
+    // Adicionar timestamp
+    data.timestamp = new Date().toISOString();
+    data.id = Date.now();
+    
+    // Salvar no localStorage
+    Storage.saveFormData(data);
+    
+    // Mostrar mensagem de sucesso
+    this.showSuccessMessage(form);
+    
+    // Limpar formulário após 2 segundos
+    setTimeout(() => {
+      form.reset();
+      this.clearAllErrors(form);
+    }, 2000);
+  },
+  
+  showSuccessMessage(form) {
+    // Remover mensagens anteriores
+    const existingMsg = document.querySelector('.form-success-global');
+    if (existingMsg) existingMsg.remove();
+    
+    const successDiv = document.createElement('div');
+    successDiv.className = 'form-success-global';
+    successDiv.innerHTML = `
+      <div class="success-icon">✓</div>
+      <h3>Cadastro Realizado com Sucesso!</h3>
+      <p>Obrigado por se juntar aos Defensores do Rio.</p>
+      <p>Em breve entraremos em contato através do e-mail cadastrado.</p>
+    `;
+    
+    form.insertAdjacentElement('beforebegin', successDiv);
+    successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Remover após 10 segundos
+    setTimeout(() => successDiv.remove(), 10000);
+  }
+};
+
+// ===================================
+// MÁSCARAS DE ENTRADA AUTOMÁTICAS
+// ===================================
+
+const InputMasks = {
+  init() {
+    this.setupCPFMask();
+    this.setupTelefoneMask();
+    this.setupCEPMask();
+  },
+  
+  setupCPFMask() {
+    const cpfInput = document.getElementById('cpf');
+    if (!cpfInput) return;
+    
+    cpfInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length <= 11) {
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      }
+      
+      e.target.value = value;
+    });
+  },
+  
+  setupTelefoneMask() {
+    const telInput = document.getElementById('telefone');
+    if (!telInput) return;
+    
+    telInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length <= 11) {
+        value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+        value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+      }
+      
+      e.target.value = value;
+    });
+  },
+  
+  setupCEPMask() {
+    const cepInput = document.getElementById('cep');
+    if (!cepInput) return;
+    
+    cepInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length <= 8) {
+        value = value.replace(/(\d{5})(\d)/, '$1-$2');
+      }
+      
+      e.target.value = value;
+    });
+    
+    // Buscar endereço via CEP
+    cepInput.addEventListener('blur', () => {
+      const cep = cepInput.value.replace(/\D/g, '');
+      if (cep.length === 8) {
+        this.buscarCEP(cep);
+      }
+    });
+  },
+  
+  async buscarCEP(cep) {
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const data = await response.json();
+      
+      if (!data.erro) {
+        // Preencher campos automaticamente
+        const enderecoInput = document.getElementById('endereco');
+        const bairroInput = document.getElementById('bairro');
+        const cidadeInput = document.getElementById('cidade');
+        const estadoInput = document.getElementById('estado');
+        
+        if (enderecoInput && data.logradouro) {
+          enderecoInput.value = data.logradouro;
+          FormValidator.clearError(enderecoInput);
+        }
+        
+        if (bairroInput && data.bairro) {
+          bairroInput.value = data.bairro;
+        }
+        
+        if (cidadeInput && data.localidade) {
+          cidadeInput.value = data.localidade;
+          FormValidator.clearError(cidadeInput);
+        }
+        
+        if (estadoInput && data.uf) {
+          estadoInput.value = data.uf;
+          FormValidator.clearError(estadoInput);
+        }
+        
+        // Focar no campo número
+        const numeroInput = document.getElementById('numero');
+        if (numeroInput) numeroInput.focus();
+        
+        // Mostrar notificação
+        this.showNotification('✓ Endereço preenchido automaticamente');
+      }
+    } catch (error) {
+      console.log('Erro ao buscar CEP:', error);
+    }
+  },
+  
+  showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'cep-notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10000;
+      animation: slideInRight 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.animation = 'slideOutRight 0.3s ease-out';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+};
+
+// ===================================
+// ARMAZENAMENTO LOCAL (LocalStorage)
+// ===================================
+
+const Storage = {
+  saveFormData(data) {
+    try {
+      const submissions = this.getSubmissions();
+      submissions.push(data);
+      
+      localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+      
+      console.log('✓ Dados salvos com sucesso:', data);
+      console.log(`Total de cadastros salvos: ${submissions.length}`);
+      
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+    }
+  },
+  
+  getSubmissions() {
+    try {
+      const data = localStorage.getItem('formSubmissions');
+      return data ? JSON.parse(data) : [];
+    } catch (error) {
+      console.error('Erro ao recuperar dados:', error);
+      return [];
+    }
+  },
+  
+  clearSubmissions() {
+    localStorage.removeItem('formSubmissions');
+    console.log('✓ Todos os cadastros foram removidos');
+  },
+  
+  getLastSubmission() {
+    const submissions = this.getSubmissions();
+    return submissions.length > 0 ? submissions[submissions.length - 1] : null;
+  },
+  
+  exportToJSON() {
+    const submissions = this.getSubmissions();
+    const dataStr = JSON.stringify(submissions, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = `cadastros-defensores-${Date.now()}.json`;
+    link.click();
+    
+    console.log('✓ Dados exportados com sucesso');
+  }
+};
+
+// ===================================
+// INTERATIVIDADE E ANIMAÇÕES
+// ===================================
+
+const Interactions = {
+  init() {
+    this.setupScrollEffects();
+    this.setupButtonEffects();
+    this.setupFieldsetAnimation();
+    this.addProgressIndicator();
+  },
+  
+  setupScrollEffects() {
+    const sections = document.querySelectorAll('section, fieldset');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(section => {
+      section.classList.add('fade-in');
+      observer.observe(section);
+    });
+  },
+  
+  setupButtonEffects() {
+    const buttons = document.querySelectorAll('button, .cta-button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+      
+      button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 100);
+      });
+    });
+  },
+  
+  setupFieldsetAnimation() {
+    const fieldsets = document.querySelectorAll('fieldset');
+    
+    fieldsets.forEach((fieldset, index) => {
+      fieldset.style.animationDelay = `${index * 0.1}s`;
+    });
+  },
+  
+  addProgressIndicator() {
+    const form = document.getElementById('formCadastro');
+    if (!form) return;
+    
+    // Criar barra de progresso
+    const progressBar = document.createElement('div');
+    progressBar.className = 'form-progress';
+    progressBar.innerHTML = `
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p class="progress-text">0% completo</p>
+    `;
+    
+    form.insertAdjacentElement('afterbegin', progressBar);
+    
+    // Atualizar progresso
+    const updateProgress = () => {
+      const requiredInputs = form.querySelectorAll('[required]');
+      let filled = 0;
+      
+      requiredInputs.forEach(input => {
+        if (input.type === 'checkbox') {
+          if (input.checked) filled++;
+        } else if (input.value.trim() !== '') {
+          filled++;
+        }
+      });
+      
+      const percentage = Math.round((filled / requiredInputs.length) * 100);
+      
+      const progressFill = form.querySelector('.progress-fill');
+      const progressText = form.querySelector('.progress-text');
+      
+      if (progressFill && progressText) {
+        progressFill.style.width = `${percentage}%`;
+        progressText.textContent = `${percentage}% completo`;
+        
+        // Mudar cor baseado no progresso
+        if (percentage < 30) {
+          progressFill.style.backgroundColor = '#dc3545';
+        } else if (percentage < 70) {
+          progressFill.style.backgroundColor = '#ffc107';
+        } else {
+          progressFill.style.backgroundColor = '#28a745';
+        }
+      }
+    };
+    
+    // Atualizar ao digitar
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', updateProgress);
+      input.addEventListener('change', updateProgress);
+    });
+    
+    // Inicializar
+    updateProgress();
+  }
+};
+
+// ===================================
+// CONTADOR DE CARACTERES
+// ===================================
+
+const CharCounter = {
+  init() {
+    const textInputs = document.querySelectorAll('input[maxlength], textarea[maxlength]');
+    
+    textInputs.forEach(input => {
+      this.addCounter(input);
+    });
+  },
+  
+  addCounter(input) {
+    const maxLength = input.getAttribute('maxlength');
+    if (!maxLength) return;
+    
+    const counter = document.createElement('small');
+    counter.className = 'char-counter';
+    counter.textContent = `0/${maxLength}`;
+    
+    input.insertAdjacentElement('afterend', counter);
+    
+    input.addEventListener('input', () => {
+      const length = input.value.length;
+      counter.textContent = `${length}/${maxLength}`;
+      
+      if (length >= maxLength * 0.9) {
+        counter.style.color = '#dc3545';
+      } else {
+        counter.style.color = '#666';
+      }
+    });
+  }
+};
+
+// ===================================
+// TEMPLATE SYSTEM - CRIAÇÃO DINÂMICA
+// ===================================
+
+const Templates = {
+  // Template para criar cards de estatísticas
+  createStatCard(title, value, icon) {
+    return `
+      <div class="stat-card">
+        <div class="stat-icon">${icon}</div>
+        <div class="stat-content">
+          <h3 class="stat-value">${value}</h3>
+          <p class="stat-title">${title}</p>
+        </div>
+      </div>
+    `;
+  },
+  
+  // Template para lista de cadastros
+  createSubmissionList() {
+    const submissions = Storage.getSubmissions();
+    
+    if (submissions.length === 0) {
+      return '<p>Nenhum cadastro encontrado.</p>';
+    }
+    
+    let html = '<div class="submissions-list">';
+    
+    submissions.forEach((sub, index) => {
+      const date = new Date(sub.timestamp);
+      const dateStr = date.toLocaleDateString('pt-BR');
+      const timeStr = date.toLocaleTimeString('pt-BR');
+      
+      html += `
+        <div class="submission-item">
+          <strong>#${index + 1} - ${sub.nomeCompleto}</strong>
+          <p>Email: ${sub.email}</p>
+          <p>Telefone: ${sub.telefone}</p>
+          <p>Tipo: ${sub.tipoCadastro}</p>
+          <small>Cadastrado em: ${dateStr} às ${timeStr}</small>
+        </div>
+      `;
+    });
+    
+    html += '</div>';
+    return html;
+  },
+  
+  // Inserir estatísticas na página
+  insertStats(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const submissions = Storage.getSubmissions();
+    const voluntarios = submissions.filter(s => s.tipoCadastro === 'voluntario').length;
+    const ongs = submissions.filter(s => s.tipoCadastro === 'ong').length;
+    const apoiadores = submissions.filter(s => s.tipoCadastro === 'apoiador').length;
+    
+    const html = `
+      <div class="stats-grid">
+        ${this.createStatCard('Total de Cadastros', submissions.length, '👥')}
+        ${this.createStatCard('Voluntários', voluntarios, '💚')}
+        ${this.createStatCard('ONGs Parceiras', ongs, '🤝')}
+        ${this.createStatCard('Apoiadores', apoiadores, '🎁')}
+      </div>
+    `;
+    
+    container.innerHTML = html;
+  }
+};
+
+// ===================================
+// ACESSIBILIDADE - MELHORIAS
+// ===================================
+
+const Accessibility = {
+  init() {
+    this.setupKeyboardNavigation();
+    this.setupFocusIndicators();
+    this.setupAriaLabels();
+  },
+  
+  setupKeyboardNavigation() {
+    // Navegação por Tab melhorada
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-navigation');
+      }
+    });
+    
+    document.addEventListener('mousedown', () => {
+      document.body.classList.remove('keyboard-navigation');
+    });
+  },
+  
+  setupFocusIndicators() {
+    const style = document.createElement('style');
+    style.textContent = `
+      .keyboard-navigation *:focus {
+        outline: 3px solid #2dd881 !important;
+        outline-offset: 2px;
+      }
+    `;
+    document.head.appendChild(style);
+  },
+  
+  setupAriaLabels() {
+    const form = document.getElementById('formCadastro');
+    if (!form) return;
+    
+    // Adicionar aria-labels onde necessário
+    form.setAttribute('aria-label', 'Formulário de cadastro de voluntários');
+    
+    const fieldsets = form.querySelectorAll('fieldset');
+    fieldsets.forEach((fieldset, index) => {
+      fieldset.setAttribute('role', 'group');
+      const legend = fieldset.querySelector('legend');
+      if (legend) {
+        fieldset.setAttribute('aria-labelledby', `fieldset-${index}`);
+        legend.id = `fieldset-${index}`;
+      }
+    });
+  }
+};
+
+// ===================================
+// UTILS - FUNÇÕES UTILITÁRIAS
+// ===================================
+
+const Utils = {
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  }
+};
