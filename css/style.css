@@ -43,11 +43,10 @@ img {
 header {
     background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hover) 100%);
     color: var(--branco);
-    padding: 0,1.rem 0,1.rem;
+    padding: 0.1rem 0.1rem;
     text-align: center;
     box-shadow: 0 4px 20px rgba(45, 216, 129, 0.3);
-    position: sticky;
-    top: 0;
+
     z-index: 1000;
 }
 
