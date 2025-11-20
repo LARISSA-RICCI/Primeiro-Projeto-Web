@@ -12,6 +12,12 @@
         <img src="imagens/logo.png" alt="Logo Defensores do Rio">
         <h1>Defensores do Rio</h1>
 
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav aria-label="Navegação Principal">
             <ul>
                 <li><a href="index.html">Início</a></li>
@@ -103,6 +109,38 @@
     <script src="main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Menu Hambúrguer
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('nav ul');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    const isExpanded = navMenu.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                    menuToggle.setAttribute('aria-label', isExpanded ? 'Fechar menu' : 'Abrir menu');
+                });
+
+                // Fechar menu ao clicar em um link
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Abrir menu');
+                    });
+                });
+
+                // Fechar menu ao clicar fora
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('nav') && !e.target.closest('.menu-toggle')) {
+                        navMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Abrir menu');
+                    }
+                });
+            }
+
             // Chamadas de funções dos módulos em main.js (mantido conforme original)
             if (SPA?.init) SPA.init();
             if (FormValidator?.init) FormValidator.init();
